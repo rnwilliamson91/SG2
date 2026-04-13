@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bjptx0te5trx0"]
+
+[ext_resource type="Texture2D" uid="uid://cco24b4m21y3d" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/demo/soldier_action1.png" id="1_mi5i0"]
+[ext_resource type="Script" uid="uid://dy82mb8tanpob" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/sudden_sprite_2d.gd" id="1_sypag"]
+[ext_resource type="Script" uid="uid://dgfnuv5qi1iba" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/demo/soldier.gd" id="2_bnron"]
+[ext_resource type="Texture2D" uid="uid://b7mw1rbjmuvkn" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/demo/player_kick.png" id="3_mi5i0"]
+[ext_resource type="Texture2D" uid="uid://ch7q22rpk6081" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/demo/zombie_action1.png" id="4_xrqbr"]
+[ext_resource type="Script" uid="uid://npfdicbx18ri" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/demo/player.gd" id="5_8fyxf"]
+[ext_resource type="Texture2D" uid="uid://da4s0ihyup2qu" path="res://icon.svg" id="5_xrqbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fyxf"]
+size = Vector2(128, 126)
+
+[node name="Demo" type="Node2D" unique_id=788439731]
+
+[node name="Soldier" type="Sprite2D" parent="." unique_id=741480133]
+position = Vector2(120, 201)
+scale = Vector2(2, 2)
+texture = ExtResource("1_mi5i0")
+script = ExtResource("2_bnron")
+collision_layer = 3
+collision_mask = 3
+visible_collision_polygons = true
+metadata/_custom_type_script = "uid://dy82mb8tanpob"
+
+[node name="Soldier2" type="Sprite2D" parent="." unique_id=1573372544]
+position = Vector2(434, 417)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mi5i0")
+script = ExtResource("1_sypag")
+visible_collision_polygons = true
+metadata/_custom_type_script = "uid://dy82mb8tanpob"
+
+[node name="Zombie" type="Sprite2D" parent="." unique_id=866394770]
+position = Vector2(893, 202)
+scale = Vector2(2, 2)
+texture = ExtResource("4_xrqbr")
+script = ExtResource("1_sypag")
+visible_collision_polygons = true
+metadata/_custom_type_script = "uid://dy82mb8tanpob"
+
+[node name="Player" type="Area2D" parent="." unique_id=1856210802]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("5_8fyxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1351679290]
+position = Vector2(421, 151)
+texture = ExtResource("5_xrqbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1352106161]
+position = Vector2(421, 151)
+shape = SubResource("RectangleShape2D_8fyxf")
+
+[connection signal="area_entered" from="Soldier" to="Soldier" method="_on_area_entered"]
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]

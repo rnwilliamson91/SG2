@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dacone001"]
+
+[ext_resource type="Script" path="res://scripts/abilities/ability_def.gd" id="1_ab"]
+
+[resource]
+script = ExtResource("1_ab")
+id = &"cone_blast"
+display_name = "Cone Blast"
+cooldown = 1.1
+mana_cost = 0.0
+cast_time = 0.0
+cast_kind = 0
+delivery = 1
+cone_range = 140.0
+cone_arc_degrees = 50.0
+cone_damage = 14.0
+aura_radius = 80.0
+aura_tick_damage = 5.0
+aura_duration = 0.4

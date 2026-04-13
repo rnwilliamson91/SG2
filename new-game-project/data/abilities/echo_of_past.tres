@@ -1,0 +1,45 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://echores001"]
+
+[ext_resource type="Script" path="res://scripts/abilities/ability_def.gd" id="1_ab"]
+
+[resource]
+script = ExtResource("1_ab")
+id = &"echo_of_past"
+display_name = "Echo of the Past"
+passive_only = true
+cooldown = 0.5
+mana_cost = 0.0
+cast_time = 0.0
+cast_kind = 0
+delivery = 4
+projectile_damage = 0.0
+cone_range = 120.0
+cone_arc_degrees = 45.0
+cone_damage = 8.0
+aura_radius = 80.0
+aura_tick_damage = 5.0
+aura_duration = 0.4
+anchor_spawn_radius = 220.0
+anchor_tether_radius = 115.0
+anchor_snap_delay = 3.0
+anchor_pull_speed = 55.0
+anchor_cluster_offset = 96.0
+echo_delay_sec = 4.0
+echo_burst_interval = 0.38
+echo_burst_radius = 88.0
+echo_burst_damage = 22.0
+scrap_max_pieces = 20
+scrap_orbit_radius = 95.0
+scrap_orbit_speed = 2.1
+scrap_shrapnel_cooldown = 14.0
+scrap_shrapnel_damage_per_piece = 4.0
+trail_drop_interval = 0.1
+trail_hazard_radius = 26.0
+trail_dot_per_sec = 7.0
+trail_slow_scale = 0.5
+trail_boost_speed_mult = 3.0
+trail_invuln_sec = 0.4
+newton_speed = 210.0
+newton_hit_radius = 18.0
+newton_knockback = 340.0
+newton_scale_per_bounce = 1.1

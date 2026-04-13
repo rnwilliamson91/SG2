@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bplayer001"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/abilities/ability_controller.gd" id="2_ac"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_hurt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p"]
+radius = 14.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p")
+
+[node name="Vis" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
+color = Color(0.35, 0.65, 1, 1)
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, -2)
+scale = Vector2(2.25, 2.25)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+max_health = 100.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 68
+monitoring = true
+monitorable = true
+script = ExtResource("4_hurt")
+health_path = NodePath("../Health")
+team_is_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_p")
+
+[node name="AbilityController" type="Node" parent="."]
+script = ExtResource("2_ac")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0

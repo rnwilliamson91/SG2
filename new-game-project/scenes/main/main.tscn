@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://bmain001"]
+
+[ext_resource type="Script" uid="uid://mfhl6ed0ct73" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bplayer001" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="Script" uid="uid://dvuqvl58f028r" path="res://scripts/spawning/spawn_director.gd" id="3_spawn"]
+[ext_resource type="Script" uid="uid://dael2vnkf8ugt" path="res://scripts/projectiles/projectile_pool.gd" id="4_pool"]
+[ext_resource type="Script" uid="uid://br1q0o27clsw6" path="res://scripts/ui/hud.gd" id="5_hud"]
+[ext_resource type="PackedScene" uid="uid://c44sdqfso8ilk" path="res://scenes/ui/level_up_panel.tscn" id="6_levelup"]
+
+[node name="Main" type="Node" unique_id=666600239]
+process_mode = 3
+script = ExtResource("1_main")
+
+[node name="GameRoot" type="Node" parent="." unique_id=958680622]
+
+[node name="World" type="Node2D" parent="GameRoot" unique_id=1981033304]
+
+[node name="ArenaFloor" type="Polygon2D" parent="GameRoot/World" unique_id=1377785727]
+color = Color(0.12, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-1400, -900, 1400, -900, 1400, 900, -1400, 900)
+
+[node name="WorldEntities" type="Node2D" parent="GameRoot/World" unique_id=422658051]
+y_sort_enabled = true
+
+[node name="Player" parent="GameRoot/World/WorldEntities" unique_id=188982776 instance=ExtResource("2_player")]
+
+[node name="Mobs" type="Node2D" parent="GameRoot/World/WorldEntities" unique_id=2118963169 groups=["mobs_root"]]
+
+[node name="Projectiles" type="Node2D" parent="GameRoot/World/WorldEntities" unique_id=664772721 groups=["world_projectiles"]]
+
+[node name="Tilemaps" type="Node2D" parent="GameRoot/World" unique_id=2058451674]
+
+[node name="Pickups" type="Node2D" parent="GameRoot/World" unique_id=68176421 groups=["pickups_root"]]
+
+[node name="VFX" type="Node2D" parent="GameRoot/World" unique_id=1008493816 groups=["world_vfx"]]
+
+[node name="Managers" type="Node" parent="GameRoot" unique_id=506035795]
+
+[node name="SpawnDirector" type="Node" parent="GameRoot/Managers" unique_id=1536593624]
+script = ExtResource("3_spawn")
+
+[node name="ProjectilePool" type="Node" parent="GameRoot/Managers" unique_id=256042470 groups=["projectile_pool"]]
+script = ExtResource("4_pool")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=2096089751]
+process_mode = 3
+layer = 10
+
+[node name="HUD" type="Control" parent="UILayer" unique_id=1403508474]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/HUD" unique_id=1502565030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="UILayer/HUD/MarginContainer" unique_id=1341819515]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=1663332074]
+layout_mode = 2
+text = "HP"
+
+[node name="TimeLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=1007679603]
+layout_mode = 2
+text = "Time"
+
+[node name="XpLevelLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=988492898]
+layout_mode = 2
+text = "Lv 1 XP"
+
+[node name="WeaponsLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=1799626073]
+layout_mode = 2
+text = "Weapons"
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=470398293]
+layout_mode = 2
+text = "Loadout"
+autowrap_mode = 3
+
+[node name="GameOverLabel" type="Label" parent="UILayer/HUD/MarginContainer/VBox" unique_id=839392238]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 28
+text = "GAME OVER"
+
+[node name="PauseOverlay" type="ColorRect" parent="UILayer" unique_id=714574891]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="PauseLabel" type="Label" parent="UILayer/PauseOverlay" unique_id=1355953993]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -24.0
+offset_right = 180.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED — ESC to resume"
+horizontal_alignment = 1
+
+[node name="LevelUpCanvas" type="CanvasLayer" parent="." unique_id=2081869871]
+process_mode = 3
+layer = 30
+
+[node name="LevelUpPanel" parent="LevelUpCanvas" unique_id=959535246 instance=ExtResource("6_levelup")]

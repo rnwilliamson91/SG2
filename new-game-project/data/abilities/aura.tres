@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://daaura001"]
+
+[ext_resource type="Script" path="res://scripts/abilities/ability_def.gd" id="1_ab"]
+
+[resource]
+script = ExtResource("1_ab")
+id = &"nova"
+display_name = "Nova Pulse"
+cooldown = 2.5
+mana_cost = 0.0
+cast_time = 0.0
+cast_kind = 0
+delivery = 2
+cone_range = 120.0
+cone_arc_degrees = 45.0
+cone_damage = 8.0
+aura_radius = 110.0
+aura_tick_damage = 18.0
+aura_duration = 0.45

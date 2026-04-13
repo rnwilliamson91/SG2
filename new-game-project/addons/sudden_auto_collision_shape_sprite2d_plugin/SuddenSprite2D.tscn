@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d10uf7b3xt1ak"]
+
+[ext_resource type="Script" uid="uid://dy82mb8tanpob" path="res://addons/sudden_auto_collision_shape_sprite2d_plugin/sudden_sprite_2d.gd" id="1_0tmke"]
+[ext_resource type="Texture2D" uid="uid://da4s0ihyup2qu" path="res://icon.svg" id="1_n6xew"]
+
+[node name="SuddenSprite2d" type="Sprite2D" unique_id=986718930]
+texture = ExtResource("1_n6xew")
+script = ExtResource("1_0tmke")
+visible_collision_polygons = true

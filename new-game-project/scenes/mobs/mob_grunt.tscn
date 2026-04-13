@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmobgrunt001"]
+
+[ext_resource type="Script" path="res://scripts/mobs/mob.gd" id="1_mob"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="3_hurt"]
+[ext_resource type="Script" path="res://scripts/mobs/mob_contact_damage.gd" id="4_contact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_contact"]
+radius = 16.0
+
+[node name="MobGrunt" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_mob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Vis" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+color = Color(0.85, 0.25, 0.22, 1)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 30.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+monitoring = true
+monitorable = true
+script = ExtResource("3_hurt")
+health_path = NodePath("../Health")
+team_is_player = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hurt")
+
+[node name="ContactDamage" type="Area2D" parent="."]
+script = ExtResource("4_contact")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactDamage"]
+shape = SubResource("CircleShape2D_contact")

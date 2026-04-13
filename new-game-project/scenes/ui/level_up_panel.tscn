@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://leveluppanel001"]
+
+[ext_resource type="Script" path="res://scripts/ui/level_up_panel.gd" id="1_script"]
+
+[node name="LevelUpPanel" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.08, 0.82)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(520, 360)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "LEVEL UP"
+horizontal_alignment = 1
+
+[node name="Grid" type="VBoxContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Button1" type="Button" parent="Center/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Choice 1"
+
+[node name="Button2" type="Button" parent="Center/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Choice 2"
+
+[node name="Button3" type="Button" parent="Center/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Choice 3"
+
+[node name="Button4" type="Button" parent="Center/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Choice 4"
